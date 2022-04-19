@@ -25,7 +25,7 @@ class Dotenv
      *
      * @throws \InvalidArgumentException
      */
-    public function load( string $path):self
+    public function load(string $path): self
     {
         if (! file_exists($path)) {
             throw new InvalidArgumentException(sprintf('%s does not exist', $path));
@@ -47,7 +47,7 @@ class Dotenv
      * @param  string  $value
      * @return self
      */
-    public function set(string $key, string $value):self
+    public function set(string $key, string $value): self
     {
         $this->env[$key] = $value;
 
@@ -100,7 +100,7 @@ class Dotenv
      * Add an empty line to the config.
      * @return self
      */
-    public function addEmptyLine():self
+    public function addEmptyLine(): self
     {
         $this->env[] = '';
 
@@ -114,7 +114,7 @@ class Dotenv
      * @param  string  $heading
      * @return self
      */
-    public function heading( string $heading):self
+    public function heading(string $heading): self
     {
         if (! empty(end($this->env))) {
             $this->addEmptyLine();
@@ -136,13 +136,12 @@ class Dotenv
         return isset($this->env[$key]);
     }
 
-
     /**
      * Format the config file in key=value pairs.
      *
      * @return string
      */
-    private function format():string
+    private function format(): string
     {
         $valuePairs = Arr::mapWithKeys($this->env, function ($item, $key) {
             return is_string($key)

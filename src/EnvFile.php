@@ -27,7 +27,7 @@ class EnvFile
      *
      * @return bool
      */
-    public function write(string $content):bool
+    public function write(string $content): bool
     {
         $this->file->rewind();
         $this->file->ftruncate(0);
@@ -40,7 +40,7 @@ class EnvFile
      *
      * @return bool
      */
-    public function isNotEmpty():bool
+    public function isNotEmpty(): bool
     {
         return $this->file->getSize() > 0;
     }
@@ -60,7 +60,7 @@ class EnvFile
      *
      * @return void
      */
-    public function close():void
+    public function close(): void
     {
         $this->file = null;
     }
@@ -70,7 +70,7 @@ class EnvFile
      *
      * @return array
      */
-    private function linesFromFile():array
+    private function linesFromFile(): array
     {
         return explode(
             "\n",
@@ -83,7 +83,7 @@ class EnvFile
      *
      * @return array
      */
-    private function convertLineValuesToArray():array
+    private function convertLineValuesToArray(): array
     {
         return array_map(function ($line) {
             return preg_split('/=/', $line, 2);
@@ -95,7 +95,7 @@ class EnvFile
      *
      * @return array
      */
-    private function mapLineValuesAndKeys():array
+    private function mapLineValuesAndKeys(): array
     {
         return array_map(function ($line) {
             if (count($line) === 2) {
